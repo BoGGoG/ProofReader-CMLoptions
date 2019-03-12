@@ -20,13 +20,6 @@
 #
 #######################################################################
 
-import sys
-from proofreader.netspeak import Netspeak
-from proofreader.parse_input import parse_input
 
-def main():
-    parse_input()
-    netspeak = Netspeak()
-    search_result = netspeak(sys.argv[1])
-    print(search_result)
-
+def parse_input():
+    pass

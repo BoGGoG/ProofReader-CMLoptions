@@ -63,12 +63,18 @@ class NewUserTestCase(unittest.TestCase):
         for line in lines:
             if len(line) > 0:
                 elements = line.split("\t")
-                self.assertEqual(len(elements), 2)
+                self.assertEqual(len(elements), 3)
                 int(elements[0])
-                
+
         # Nice! It seems that the program can be useful for her purposes.
         # She goes to sleep very happy: tomorrow she will try to proofread her first
         # paper with this tool!
+
+    def test_can_accept_h(self):
+        proofread_run_result = sp.run(["proofread", "-h"], stdout=sp.PIPE)
+        proofread_run_result_output = proofread_run_result.stdout.decode()
+        wanted_out = "you called -h"
+        self.assertIn(wanted_out, proofread_run_result_output)
         
 
 if __name__ == "__main__":

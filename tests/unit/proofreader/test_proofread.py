@@ -54,6 +54,11 @@ class ProofreadExe(unittest.TestCase):
         main()
         mprint.assert_called_once_with(query)
         
+    @patch("proofreader.proofread.parse_input")
+    def test_main_calls_parse_input(self, parse_input, Netspeak, argv, mprint):
+        main()
+        parse_input.assert_called_once_with()
+
 
 if __name__ == "__main__":
     unittest.main()

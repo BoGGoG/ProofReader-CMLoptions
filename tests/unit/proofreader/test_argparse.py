@@ -20,13 +20,14 @@
 #
 #######################################################################
 
-import sys
-from proofreader.netspeak import Netspeak
-from proofreader.parse_input import parse_input
+# import unittest
+# from unittest.mock import patch, Mock, MagicMock
 
-def main():
-    parse_input()
-    netspeak = Netspeak()
-    search_result = netspeak(sys.argv[1])
-    print(search_result)
+# from proofreader.proofread import main
+# import argparse
 
+# class ProofreadExe(unittest.TestCase):
+    # def test_ArgumentParser_called(self):
+        # main()
+        # argparse.ArgumentParser.assert_called_once_with()
+    

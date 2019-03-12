@@ -1,7 +1,7 @@
 #!/bin/env python
 
 #######################################################################
-# Copyright (C) 2019 David Palao
+# Copyright (C) 2019 Hendrik and Marco 
 #
 # This file is part of ProofReader.
 #
@@ -20,13 +20,12 @@
 #
 #######################################################################
 
-import sys
-from proofreader.netspeak import Netspeak
-from proofreader.parse_input import parse_input
+# import unittest
+# from unittest.mock import patch, Mock, MagicMock
 
-def main():
-    parse_input()
-    netspeak = Netspeak()
-    search_result = netspeak(sys.argv[1])
-    print(search_result)
+# from proofreader.proofread import main
+
+# class ArgparseTest(unittest.TestCase):
+    # def test_main_calls_parse_input(self):
+        # main()
 
