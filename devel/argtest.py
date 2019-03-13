@@ -12,4 +12,6 @@ class FooAction(argparse.Action):
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--foo', help='foo help', action = FooAction)
+parser.add_argument('text', nargs='+', help='for standard text')
 args = parser.parse_args()
+print(args)

@@ -24,4 +24,5 @@ import argparse
 
 def parse_input(argv):
     parser = argparse.ArgumentParser()
+    parser.add_argument('text', nargs='+', help='for standard netspeak input')
     args = parser.parse_args()
