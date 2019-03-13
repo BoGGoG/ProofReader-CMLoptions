@@ -25,17 +25,17 @@ from unittest.mock import patch, Mock, MagicMock
 
 from proofreader.proofread import main
 
-        
+@patch("proofreader.proofread.parse_input")        
 @patch("proofreader.proofread.print")
 @patch("proofreader.proofread.sys.argv")
 @patch("proofreader.proofread.Netspeak")
 class ProofreadExe(unittest.TestCase):
-    def test_main_creates_Netspeak_instance(self, Netspeak, argv, mprint):
+    def test_main_creates_Netspeak_instance(self, Netspeak, argv, mprint, parse_input):
         main()
         Netspeak.assert_called_once_with()
 
     def test_main_calls_Netspeak_instance_with_first_cl_argument(
-            self, Netspeak, argv, mprint):
+            self, Netspeak, argv, mprint, parse_input):
         netspeak_instance = Mock()
         Netspeak.return_value = netspeak_instance
         item = MagicMock()
@@ -46,7 +46,7 @@ class ProofreadExe(unittest.TestCase):
         main()
         netspeak_instance.assert_called_once_with(item)
 
-    def test_main_calls_print(self, Netspeak, argv, mprint):
+    def test_main_calls_print(self, Netspeak, argv, mprint, parse_input):
         netspeak_instance = Mock()
         Netspeak.return_value = netspeak_instance
         query = Mock()
@@ -54,8 +54,7 @@ class ProofreadExe(unittest.TestCase):
         main()
         mprint.assert_called_once_with(query)
         
-    @patch("proofreader.proofread.parse_input")
-    def test_main_calls_parse_input_with_all_cl_input(self, parse_input, Netspeak, argv, mprint):
+    def test_main_calls_parse_input_with_all_cl_input(self, Netspeak, argv, mprint, parse_input):
         main()
         parse_input.assert_called_once_with(argv)
 

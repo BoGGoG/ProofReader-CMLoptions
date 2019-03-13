@@ -73,7 +73,7 @@ class NewUserTestCase(unittest.TestCase):
     def test_can_accept_h(self):
         proofread_run_result = sp.run(["proofread", "-h"], stdout=sp.PIPE)
         proofread_run_result_output = proofread_run_result.stdout.decode()
-        wanted_out = "you called -h"
+        wanted_out = "usage: proofread"
         self.assertIn(wanted_out, proofread_run_result_output)
         
 

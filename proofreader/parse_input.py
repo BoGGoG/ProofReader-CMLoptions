@@ -20,6 +20,8 @@
 #
 #######################################################################
 
+import argparse
 
 def parse_input(argv):
-    pass
+    parser = argparse.ArgumentParser()
+    args = parser.parse_args()

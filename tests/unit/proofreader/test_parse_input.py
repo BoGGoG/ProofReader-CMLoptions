@@ -20,12 +20,20 @@
 #
 #######################################################################
 
-# import unittest
-# from unittest.mock import patch, Mock, MagicMock
+import unittest
+from unittest.mock import patch, Mock, MagicMock
 
-# from proofreader.proofread import main
+from proofreader.proofread import main
 
-# class ArgparseTest(unittest.TestCase):
-    # def test_main_calls_parse_input(self):
-        # main()
+@patch("proofreader.parse_input.argparse")
+class ParseInputExe(unittest.TestCase):
+    def test_main_creates_ArgumentParser_instance(self, argparse):
+        main()
+        argparse.ArgumentParser.assert_called_once_with()
+
+    def test_main_calls_parse_args_of_instance(self, argparse):
+        parser = Mock()
+        argparse.ArgumentParser.return_value = parser
+        main()
+        parser.parse_args.assert_called_once_with()
 
