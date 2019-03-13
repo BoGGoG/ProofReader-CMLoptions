@@ -22,18 +22,40 @@
 
 import unittest
 from unittest.mock import patch, Mock, MagicMock
+import subprocess as sp
+import sys
 
 from proofreader.proofread import main
+from proofreader.parse_input import parse_input
 
-@patch("proofreader.parse_input.argparse")
 class ParseInputExe(unittest.TestCase):
+    pass
+    @patch("proofreader.parse_input.argparse")
     def test_main_creates_ArgumentParser_instance(self, argparse):
-        main()
+        parse_input()
         argparse.ArgumentParser.assert_called_once_with()
 
+    @patch("proofreader.parse_input.argparse")
     def test_main_calls_parse_args_of_instance(self, argparse):
         parser = Mock()
         argparse.ArgumentParser.return_value = parser
-        main()
+        parse_input()
         parser.parse_args.assert_called_once_with()
+
+    @patch("proofreader.parse_input.argparse")
+    def test_parse_input_returns_args(self, argparse):
+        args = Mock()
+        parser = Mock()
+        argparse.ArgumentParser.return_value = parser
+        parser.parse_args.return_value = args
+        output = parse_input()
+        self.assertEqual(output, args)
+
+    def test_parse_input_works_for_strings(self):
+        sys.argv = ["program name", "banana rama"]
+        print(parse_input())
+
+if __name__ == "__main__":
+    unittest.main()
+
 

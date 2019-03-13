@@ -56,7 +56,7 @@ class ProofreadExe(unittest.TestCase):
         
     def test_main_calls_parse_input_with_all_cl_input(self, Netspeak, argv, mprint, parse_input):
         main()
-        parse_input.assert_called_once_with(argv)
+        parse_input.assert_called_once_with()
 
 
 if __name__ == "__main__":

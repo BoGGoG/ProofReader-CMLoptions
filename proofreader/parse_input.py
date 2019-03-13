@@ -22,7 +22,9 @@
 
 import argparse
 
-def parse_input(argv):
+def parse_input():
     parser = argparse.ArgumentParser()
-    # parser.add_argument('text', nargs='+', help='for standard netspeak input')
+    parser.add_argument('text', nargs='+', help='for standard netspeak input')
     args = parser.parse_args()
+    # print(args)
+    return args
