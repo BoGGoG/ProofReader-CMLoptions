@@ -1,0 +1,8 @@
+MANIFEST.in
+README.rst
+setup.py
+proofreader/__init__.py
+proofreader/netspeak.py
+proofreader/proofread.py
+tests/unit/proofreader/test_netspeak.py
+tests/unit/proofreader/test_proofread.py
