@@ -25,8 +25,9 @@ from proofreader.netspeak import Netspeak
 from proofreader.parse_input import parse_input
 
 def main():
-    parse_input()
+    parse_output = parse_input()
     netspeak = Netspeak()
-    search_result = netspeak(sys.argv[1])
+    # search_result = netspeak(sys.argv[1])
+    search_result = netspeak(parse_output)
     print(search_result)
 

@@ -26,5 +26,6 @@ def parse_input():
     parser = argparse.ArgumentParser()
     parser.add_argument('text', nargs='+', help='for standard netspeak input')
     args = parser.parse_args()
-    # print(args)
-    return args
+    s = ' '
+    print(s.join(args.text))
+    return s.join(args.text)

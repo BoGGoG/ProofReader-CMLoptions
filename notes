@@ -1,0 +1,4 @@
+args[text] = ["banana", "rama"]
+s = " "
+return s.join(args)
+

@@ -34,17 +34,26 @@ class ProofreadExe(unittest.TestCase):
         main()
         Netspeak.assert_called_once_with()
 
-    def test_main_calls_Netspeak_instance_with_first_cl_argument(
+    # def test_main_calls_Netspeak_instance_with_first_cl_argument(
+            # self, Netspeak, argv, mprint, parse_input):
+        # netspeak_instance = Mock()
+        # Netspeak.return_value = netspeak_instance
+        # item = MagicMock()
+        # d = {1: item}
+        # def getitem(key):
+            # return d[key]
+        # argv.__getitem__.side_effect = getitem
+        # main()
+        # netspeak_instance.assert_called_once_with(item)
+
+    def test_main_calls_Netspeak_instance_with_output_of_parse_input(
             self, Netspeak, argv, mprint, parse_input):
+        parse_input_return = Mock()
+        parse_input.return_value = parse_input_return
         netspeak_instance = Mock()
         Netspeak.return_value = netspeak_instance
-        item = MagicMock()
-        d = {1: item}
-        def getitem(key):
-            return d[key]
-        argv.__getitem__.side_effect = getitem
         main()
-        netspeak_instance.assert_called_once_with(item)
+        netspeak_instance.assert_called_once_with(parse_input_return)
 
     def test_main_calls_print(self, Netspeak, argv, mprint, parse_input):
         netspeak_instance = Mock()

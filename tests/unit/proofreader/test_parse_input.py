@@ -35,25 +35,58 @@ class ParseInputExe(unittest.TestCase):
         parse_input()
         argparse.ArgumentParser.assert_called_once_with()
 
-    @patch("proofreader.parse_input.argparse")
-    def test_main_calls_parse_args_of_instance(self, argparse):
-        parser = Mock()
-        argparse.ArgumentParser.return_value = parser
-        parse_input()
-        parser.parse_args.assert_called_once_with()
+    # @patch("proofreader.parse_input.argparse")
+    # def test_main_calls_parse_args_of_instance(self, argparse):
+        # parser = Mock()
+        # argparse.ArgumentParser.return_value = parser
+        # parse_input()
+        # parser.parse_args.assert_called_once_with()
+
+    # @patch("proofreader.parse_input.argparse")
+    # def test_parse_input_returns_args(self, argparse):
+        # args = Mock()
+        # parser = Mock()
+        # argparse.ArgumentParser.return_value = parser
+        # parser.parse_args.return_value = args
+        # output = parse_input()
+        # self.assertEqual(output, args)
 
     @patch("proofreader.parse_input.argparse")
-    def test_parse_input_returns_args(self, argparse):
-        args = Mock()
+    def test_parse_input_returns_text_array(self, argparse):
         parser = Mock()
         argparse.ArgumentParser.return_value = parser
+        args = MagicMock()
         parser.parse_args.return_value = args
+
+        text = ["banana", "rama"]
+        args.text = text
         output = parse_input()
-        self.assertEqual(output, args)
+
+        s = " "
+        string_out = s.join(text)
+        self.assertEqual(output, string_out)
+
+
+
+
+    # @patch("proofreader.parse_input.argparse")
+    # def test_parse_input_returns_text_array(self, argparse):
+        # parser = Mock()
+        # argparse.ArgumentParser.return_value = parser
+
+        # args = MagicMock()
+        # parser.parse_args.return_value = args
+        # text = Mock()
+        # d = {"text": text}
+        # def getitem(key):
+            # return d[key]
+        # args.__getitem__.side_effect = getitem
+        # output = parse_input()
+        # self.assertEqual(output, text)
 
     def test_parse_input_works_for_strings(self):
         sys.argv = ["program name", "banana rama"]
-        print(parse_input())
+        # print(parse_input())
 
 if __name__ == "__main__":
     unittest.main()
